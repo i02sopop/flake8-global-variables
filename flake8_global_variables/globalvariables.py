@@ -1,7 +1,9 @@
 import ast
+import pycodestyle
 
 from flake8_global_variables import __version__
 from flake8_global_variables.visitor import Visitor
+
 
 class GlobalVariables(object):
     name = "global-variables"
@@ -21,9 +23,8 @@ class GlobalVariables(object):
         )
 
     def run(self):
-        self.check_variables()
-        #for error in self.check_variables():
-        #    yield error
+        for error in self.check_variables():
+            yield error
 
     def load_file(self):
         if self.filename in ("stdin", "-", None):
@@ -41,6 +42,9 @@ class GlobalVariables(object):
 
         visitor = Visitor(self.filename)
         visitor.visit(self.tree)
+
+        for err in visitor.errors:
+            yield self.error(err)
 
 def register_opt(parser, *args, **kwargs):
     parser.add_option(*args, **kwargs)
