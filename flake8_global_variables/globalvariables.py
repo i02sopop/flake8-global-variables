@@ -21,8 +21,9 @@ class GlobalVariables(object):
         )
 
     def run(self):
-        for error in self.check_variables():
-            yield error
+        self.check_variables()
+        #for error in self.check_variables():
+        #    yield error
 
     def load_file(self):
         if self.filename in ("stdin", "-", None):
@@ -34,11 +35,11 @@ class GlobalVariables(object):
         if self.tree is None:
             self.tree = ast.parse(''.join(self.lines))
 
-    def chech_words(self):
+    def check_variables(self):
         if not self.tree or not self.lines:
             self.load_file()
 
-        visitor = Visitor()
+        visitor = Visitor(self.filename)
         visitor.visit(self.tree)
 
 def register_opt(parser, *args, **kwargs):
