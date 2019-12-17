@@ -17,8 +17,8 @@ setuptools.setup(
     ],
     install_requires=requires,
     entry_points={
-        flake8.extension: [
-            'X = flake8_global_variables.GlobalVariables',
+        'flake8.extension': [
+            'X = flake8_global_variables.globalvariables:GlobalVariables',
         ],
     },
     classifiers=[

@@ -1,6 +1,7 @@
 import ast
 
-from visitor import Visitor
+from flake8_global_variables import __version__
+from flake8_global_variables.visitor import Visitor
 
 class GlobalVariables(object):
     name = "global-variables"

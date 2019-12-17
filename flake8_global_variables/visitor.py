@@ -7,8 +7,9 @@ class Visitor(ast.NodeVisitor):
 
     def visit_Assign(self, node):
         if node.col_offset == 0:
+            print('Global variable %s in line %d', name, node.lineno)
             self.lines.append(node.lineno)
 
     def visit_Global(self, node):
         for name in node.names:
-            print 'Global variable %s in line %d' % (name, node.lineno)
+            print('Global variable %s in line %d', name, node.lineno)
