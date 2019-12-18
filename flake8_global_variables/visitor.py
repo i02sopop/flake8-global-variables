@@ -30,7 +30,6 @@ class Visitor(ast.NodeVisitor):
     def visit_Assign(self, node):
         if node.col_offset == 0:
             for target in node.targets:
-                # print(self.filename, ': Global variable', target.id, 'defined in line', node.lineno)
                 self.errors.append(Error(node.lineno, 'W001',
                                          'Global variable {0} defined'.format(target.id)))
 
