@@ -29,13 +29,19 @@ class Visitor(ast.NodeVisitor):
     def visit_Assign(self, node):
         if node.col_offset == 0:
             for target in node.targets:
-                self.errors.append(Error(node.lineno, 'W001',
-                                         'Global variable {0} defined'.format(target.id)))
+                # We consider that the variables in upper case are constants,
+                # not global variables.
+                if not target.id.isupper():
+                    self.errors.append(Error(node.lineno, 'W001',
+                                             'Global variable {0} defined'.format(target.id)))
 
         super(Visitor, self).generic_visit(node)
 
     def visit_Global(self, node):
         for name in node.names:
-            self.errors.append(Error(node.lineno, 'W002',
-                                     'Global variable {0} used'.format(name)))
+            # We consider that the variables in upper case are constants,
+            # not global variables.
+            if not name.isupper():
+                self.errors.append(Error(node.lineno, 'W002',
+                                         'Global variable {0} used'.format(name)))
         uper(Visitor, self).generic_visit(node)
