@@ -23,8 +23,7 @@ Error = namedtuple('Error', ['lineno', 'code', 'message'])
 
 
 class Visitor(ast.NodeVisitor):
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self):
         self.errors = []
 
     def visit_Assign(self, node):
@@ -39,4 +38,4 @@ class Visitor(ast.NodeVisitor):
         for name in node.names:
             self.errors.append(Error(node.lineno, 'W002',
                                      'Global variable {0} used'.format(name)))
-        super(Visitor, self).generic_visit(node)
+        uper(Visitor, self).generic_visit(node)

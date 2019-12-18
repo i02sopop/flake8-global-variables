@@ -57,7 +57,7 @@ class GlobalVariables(object):
         if not self.tree or not self.lines:
             self.load_file()
 
-        visitor = Visitor(self.filename)
+        visitor = Visitor()
         visitor.visit(self.tree)
 
         for err in visitor.errors:
