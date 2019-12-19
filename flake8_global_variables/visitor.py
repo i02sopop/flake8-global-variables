@@ -44,4 +44,4 @@ class Visitor(ast.NodeVisitor):
             if not name.isupper():
                 self.errors.append(Error(node.lineno, 'W002',
                                          'Global variable {0} used'.format(name)))
-        uper(Visitor, self).generic_visit(node)
+        super(Visitor, self).generic_visit(node)
