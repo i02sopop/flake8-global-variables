@@ -31,6 +31,9 @@ class Visitor(ast.NodeVisitor):
     def visit_Assign(self, node):
         if node.col_offset == 0:
             for target in node.targets:
+                if not hasattr(target, 'id'):
+                    continue
+
                 # We consider that the variables in upper case are constants,
                 # not global variables.
                 if not target.id.isupper():
