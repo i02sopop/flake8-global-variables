@@ -1,4 +1,4 @@
-# Copyright (C) 2019 Pablo Alvarez de Sotomayor Posadillo
+# Copyright (C) 2019-2020 Pablo Alvarez de Sotomayor Posadillo
 
 # This file is part of flake8_global_variables.
 
@@ -21,13 +21,13 @@ __summary__ = (
 )
 __uri__ = "https://github.com/i02sopop/flake8-global-variables"
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __author__ = "Ritho"
-__email__ = "p.alvarez@zaleos.net"
+__email__ = "palvarez@ritho.net"
 
 __maintainer__ = "Ritho"
-__maintainer_email__ = "p.alvarez@zaleos.net"
+__maintainer_email__ = "palvarez@ritho.net"
 
-__license__ = ""
-__copyright__ = "Copyright 2019 %s" % __author__
+__license__ = "GPLv3"
+__copyright__ = "Copyright 2019-2020 %s" % __author__
